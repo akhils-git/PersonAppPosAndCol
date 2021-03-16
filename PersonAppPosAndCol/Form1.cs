@@ -28,6 +28,7 @@ namespace PersonAppPosAndCol
             if (loggndPerson!=null)
             {
                 FormUserHome formUserHome = new FormUserHome(loggndPerson);
+                formUserHome.Show();
                 //this.Hide();
             }
         }
@@ -48,8 +49,8 @@ namespace PersonAppPosAndCol
             Person person = new Person();
             person.ID =Convert.ToInt32( reader["ID"]);
             person.Name = reader["ID"].ToString();
-            person.Left = Convert.ToInt32(Convert.ToInt32(reader["ID"]));
-            person.Top = Convert.ToInt32(Convert.ToInt32(reader["ID"]));
+            person.Left = Convert.ToInt32(Convert.ToInt32(reader["Left"]));
+            person.Top = Convert.ToInt32(Convert.ToInt32(reader["Top"]));
             person.Username = reader["Username"].ToString();
             person.Color = reader["Color"].ToString();
             return person;
