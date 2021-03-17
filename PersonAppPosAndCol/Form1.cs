@@ -48,7 +48,7 @@ namespace PersonAppPosAndCol
 
             Person person = new Person();
             person.ID =Convert.ToInt32( reader["ID"]);
-            person.Name = reader["ID"].ToString();
+            person.Name = reader["Name"].ToString();
             person.Left = Convert.ToInt32(Convert.ToInt32(reader["Left"]));
             person.Top = Convert.ToInt32(Convert.ToInt32(reader["Top"]));
             person.Username = reader["Username"].ToString();

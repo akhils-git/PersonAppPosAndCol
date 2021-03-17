@@ -16,7 +16,7 @@ namespace PersonAppPosAndCol
     public partial class FormUserHome : Form
     {
         Person _person;
-      
+
         public FormUserHome(Person person)
         {
             InitializeComponent();
@@ -28,9 +28,9 @@ namespace PersonAppPosAndCol
             this.BackColor = Color.FromArgb(Convert.ToInt32(_person.Color));
             this.Left = _person.Left;
             this.Top = _person.Top;
-            lblUsername.Text = "Welcome " + _person.Name;
+            this.Text = lblUsername.Text = "Welcome " + _person.Name;
         }
-        private void UpdateWindowPosition(int left, int top,int personId)
+        private void UpdateWindowPosition(int left, int top, int personId)
         {
             SqlConnection connection = new SqlConnection(DatabaseConnections.MSSQLConnectionString);
             connection.Open();
@@ -40,12 +40,12 @@ namespace PersonAppPosAndCol
             command.Parameters.AddWithValue("Left", left);
             command.Parameters.AddWithValue("Top", top);
             command.ExecuteNonQuery();
-         
+
         }
 
         private void FormUserHome_FormClosing(object sender, FormClosingEventArgs e)
         {
-            UpdateWindowPosition(this.Left, this.Top,_person.ID);
+            UpdateWindowPosition(this.Left, this.Top, _person.ID);
         }
 
         private void lblTheme_Click(object sender, EventArgs e)
