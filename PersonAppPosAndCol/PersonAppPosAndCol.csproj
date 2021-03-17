@@ -93,6 +93,7 @@
   <ItemGroup>
     <Content Include="ProjectSupportFiles\Connection.txt" />
     <Content Include="ProjectSupportFiles\DatabaseFile.sql" />
+    <Content Include="ProjectSupportFiles\Readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
