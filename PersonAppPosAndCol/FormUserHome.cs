@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,7 @@ namespace PersonAppPosAndCol
     public partial class FormUserHome : Form
     {
         Person _person;
-
+        Stopwatch stopWatch = new Stopwatch();
         public FormUserHome(Person person)
         {
             InitializeComponent();
@@ -29,6 +30,11 @@ namespace PersonAppPosAndCol
             this.Left = _person.Left;
             this.Top = _person.Top;
             this.Text = lblUsername.Text = "Welcome " + _person.Name;
+            stopWatch.Start();
+           
+           
+
+          
         }
         private void UpdateWindowPosition(int left, int top, int personId)
         {
@@ -64,6 +70,31 @@ namespace PersonAppPosAndCol
             command.Parameters.AddWithValue("ID", personId);
             command.Parameters.AddWithValue("Color", colorDialog1.Color.ToArgb().ToString());
             command.ExecuteNonQuery();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            ShowLogoutTimer();
+        }
+
+        private void ShowLogoutTimer()
+        {
+            TimeSpan ts = stopWatch.Elapsed;
+
+            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}",
+                ts.Hours, ts.Minutes, ts.Seconds,
+                ts.Milliseconds / 10);
+            lblTimeShow.Text = elapsedTime;
+            if (lblTimeShow.Text=="00:00:05")
+            {
+                Environment.Exit(0);
+            }
+        }
+
+        private void FormUserHome_MouseMove(object sender, MouseEventArgs e)
+        {
+            stopWatch.Reset();
+            stopWatch.Start();
         }
     }
 }
